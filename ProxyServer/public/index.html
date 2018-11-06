@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Proxy</title>
+</head>
+
+
+
+<body>
+  <div id="gallery"></div>
+  <div id="ProductInfo"></div>
+  <div id="reviews" class="tabcontent"></div>
+
+  <div class="tab">
+    <button class="tablinks" onclick="openCity(event, 'Overview')">Overview</button>
+    <button class="tablinks" onclick="openCity(event, 'reviews')">Reviews</button>
+  </div>
+  <div id="Overview" class="tabcontent" style="display:block"></div>
+
+    <script>
+    function openCity(evt, cityName) {
+      // Declare all variables
+      var i, tabcontent, tablinks;
+      // Get all elements with class="tabcontent" and hide them
+      tabcontent = document.getElementsByClassName("tabcontent");
+      for (i = 0; i < tabcontent.length; i++) {
+          tabcontent[i].style.display = "none";
+      }
+      // Get all elements with class="tablinks" and remove the class "active"
+      tablinks = document.getElementsByClassName("tablinks");
+      for (i = 0; i < tablinks.length; i++) {
+          tablinks[i].className = tablinks[i].className.replace(" active", "");
+      }
+      // Show the current tab, and add an "active" class to the button that opened the tab
+      document.getElementById(cityName).style.display = "block";
+      evt.currentTarget.className += " active";
+    }
+    </script>
+
+
+  <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+  <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+  <script src="http://ec2-54-209-75-211.compute-1.amazonaws.com/gallery.bundle.js"></script>
+  <script src="http://18.224.199.183/info.bundle.js"></script>
+  <script src="http://ec2-54-213-205-51.us-west-2.compute.amazonaws.com/bundle.js"></script>
+  <script src="http://ec2-54-89-153-231.compute-1.amazonaws.com/bundle.js"></script>
+  <!-- see: https://reactjs.org/docs/react-without-jsx.html -->
+  <script>
+    ReactDOM.render(
+      React.createElement(Info),
+      document.getElementById('ProductInfo')
+    );
+      ReactDOM.render(
+        React.createElement(Overview),
+        document.getElementById('Overview')
+      );
+  </script>
+</body>
+</html>
