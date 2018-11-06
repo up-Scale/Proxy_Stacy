@@ -1,2 +1,6 @@
+# General
+.DS_Store
+
+# Files
 node_modules
 config.js
